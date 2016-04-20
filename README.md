@@ -29,7 +29,6 @@
 - Với người dùng thì họ chỉ cần nhớ tên miền mà không cần nhớ đến địa chỉ IP mà vẫn có thể truy cập vào được.
 - Hệ thống DNS là hệ thống sử dụng cơ sở dữ liệu phân tán và phân cấp hình cây do đó việc quản lý sẽ dễ dàng hơn 
 	và cũng rất thuận tiên cho việc chuyển đổi từ tên miền sang địa chỉ IP và ngược lại.
-<img src="http://i.imgur.com/mKdx4lB.jpg" />
 
 <a name="II"></a>
 ### II.Cấu trúc của hệ thống tên miền
@@ -177,6 +176,7 @@ Active Directory Integrated Zones thực chất là Zone được nâng cấp l�
 	<li>Khi dịch vụ DNS bắt đầu chạy lại secondary server</li>
 	<li>Tại secondary server yêu cầu chuyển zone </li>
   </ul>
+
 #### 2.Cơ chế hoạt động đồng bộ dữ liệu giữa các DNS server
 - Viết tắt:IXFR Zone được thực hiện chỉ khi số serial của nguồn dữ liệu và bản sao của nó khác nhau.
 - Các bước yêu cầu truyền zone:
@@ -187,9 +187,12 @@ Active Directory Integrated Zones thực chất là Zone được nâng cấp l�
 	<li>Khi thời gian làm mới của Zone đã hết, thì DNS Server nhận dữ liệu sẽ truy vấn yêu cầu làm mới Zone tới DNS Server chính.</li>
 	<li>DNS Server chính sẽ trả lời truy vấn và gửi lại dữ liệu. Trả lời truy vấn dữ liệu gồm số serial của Zone tại DNS Server chính.</li>
 	<li>DNS Server nhận dữ liệu về Zone và sẽ kiểm tra số serial trong trả lời và quyết định xem có cần truyền dữ liêu không :
-		+ Nếu số serial bằng nhau thì nó kết thúc luôn, thiết lập lại các thông số cũ lưu trong máy.
-		+ Nếu số serial tại Primary Server lớn hơn giá trị serial hiện tại DNS nhận dữ liệu. 
+		<ul>
+		<li>Nếu số serial bằng nhau thì nó kết thúc luôn, thiết lập lại các thông số cũ lưu trong máy.</li>
+		<li>Nếu số serial tại Primary Server lớn hơn giá trị serial hiện tại DNS nhận dữ liệu.
 		Thì nó kết luận Zone cần được cập nhật và cần đồng bộ dữ liệu giữa hai DNS Server</li>
+		</ul>
+	</li>
 	<li>Nếu có kết luận cần truyền zone thì nó sẽ gửi yêu cầu IXFR tới DNS Server chính để yêu cầu truyền dữ liệu của Zone.</li>
 	<li>DNS Server chính sẽ trả lời với việc gửi những thay đổi của Zone hoặc toàn bộ Zone tùy xem nó có hỗ trợ hay không.</li>
 </ul>
