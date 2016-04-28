@@ -383,6 +383,7 @@ chkconfig --list iptables
 ```sh
 service named start
 chkconfig named on
+```
 #### c.Cấu hình client.
 ##### I.Client Centos
 - Cấu hình IP và DNS 
