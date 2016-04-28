@@ -392,8 +392,8 @@ chkconfig named on
 - Chỉnh sửa file "/etc/resolv.conf" và thêm những dòng sau
 ```sh
 search lamtlu.com
-nameserver 192.168.0.1
-nameserver 192.168.0.2
+nameserver 192.168.10.1
+nameserver 192.168.10.2
 ```
 
 ##### II.Win7
